@@ -56,6 +56,7 @@ const PaymentForm = () => {
       setShowAlert(true);
       setTimeout(() => {
         setShowAlert(false);
+        window.location.href = "/";
       }, 3000);
     }
   }, []);
