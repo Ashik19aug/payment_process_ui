@@ -24,7 +24,7 @@ export const RequestPostAPI = async (formData, config) => {
   };
   axiosConfig.headers = {...axiosConfig.headers,...config};
 
-  const result = await axios.post('http://localhost/signup-api/public/api/v1/endpoint', formData, axiosConfig)
+  const result = await axios.post('https://dev-signup-api.sslcommerz.com/api/v1/endpoint', formData, axiosConfig)
     .then((res) => {
       // console.log('---', res)
       if(res.data.code === 200){

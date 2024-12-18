@@ -1,11 +1,13 @@
 import React, {useEffect, useState} from "react";
 import {RequestPostAPI} from "./ApiHelper.js";
-import {useLocation} from "react-router-dom";
+import { useNavigate} from "react-router-dom";
+import {LOGO} from "../assets/index.jsx";
 
 const PaymentForm = () => {
   const [showAlert, setShowAlert] = useState(false);
   const [fileSelected, setFileSelected] = useState(null);
   const [trnsDataShow, setTrnsDataShow] = useState(false);
+  const navigate = useNavigate();
   const tableData = [
     {
       no: 1,
@@ -52,14 +54,15 @@ const PaymentForm = () => {
 
   useEffect(() => {
     const currentUrl = window.location.href;
-    if (currentUrl === "http://localhost:5173/upload-file-information") {
+    console.log('-=', currentUrl)
+    if (currentUrl === "https://dev-operation-revamp.sslcommerz.com/success") {
       setShowAlert(true);
       setTimeout(() => {
         setShowAlert(false);
-        window.location.href = "/";
+        navigate("/");
       }, 3000);
     }
-  }, []);
+  }, [navigate]);
 
   return (
     <div className="flex justify-center items-center h-screen bg-gray-100">
@@ -79,7 +82,7 @@ const PaymentForm = () => {
         {/* Left Section */}
         <div className="w-1/3 bg-gray-300 p-8 flex flex-col items-center justify-center">
           <div className="mb-6">
-            <img src="./src/assets/logo.png" style={{width: "120px"}} alt="Logo" className="rounded-full shadow-md"/>
+            <img src={LOGO} style={{width: "120px"}} alt="Logo" className="rounded-full shadow-md"/>
           </div>
           <h2 className="text-lg font-normal mb-2">Merchant name</h2>
           <p className="text-gray-600 text-sm font-light text-center leading-5">
